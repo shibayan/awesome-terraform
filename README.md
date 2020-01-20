@@ -1,4 +1,6 @@
 # awesome-terraform
+
+Basic Terraform sample definition using Azure and Azure Pipelines.
  
 ## Resources
 
@@ -13,9 +15,9 @@
 ## Pipelines
 
 - `.azure`
+  - `templates`
+    - `terraform-init.yml`
   - `pipelines-dev.yml`
     - for develop env
   - `pipelines-prd.yml`
     - for production env
-  - `templates`
-    - `terraform-init.yml`
