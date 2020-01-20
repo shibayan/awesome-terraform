@@ -1,6 +1,23 @@
 # awesome-terraform
 
 Basic Terraform sample definition using Azure and Azure Pipelines.
+
+## File structure
+
+- `envs`
+  - `dev`
+    - `main.tf`
+  - `prd`
+    - `main.tf`
+- `modules`
+  - `appInsights.tf`
+  - `appService.tf`
+  - `appServicePlan.tf`
+  - `resourceGroup.tf`
+  - `virtualNetwork.tf`
+    - Azure Resouces definition
+  - `variables.tf`
+    - Define module variables
  
 ## Resources
 
