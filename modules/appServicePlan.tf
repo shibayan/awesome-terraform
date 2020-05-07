@@ -4,7 +4,7 @@ resource "azurerm_app_service_plan" "default" {
   resource_group_name = azurerm_resource_group.default.name
 
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier = "PremiumV2"
+    size = "P1v2"
   }
 }
