@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "default" {
-  name     = "${var.environment}-terraform-test"
+  name     = "rg-terraform-${var.environment}"
   location = var.location
 }
