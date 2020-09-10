@@ -3,10 +3,6 @@ provider "azurerm" {
   features {}
 }
 
-terraform {
-  backend "azurerm" {}
-}
-
 module "common" {
   source = "../../modules/"
 
