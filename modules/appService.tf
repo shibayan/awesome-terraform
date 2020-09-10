@@ -4,6 +4,14 @@ resource "azurerm_app_service" "default" {
   resource_group_name = azurerm_resource_group.default.name
   app_service_plan_id = azurerm_app_service_plan.default.id
 
+  client_affinity_enabled = false
+  https_only              = true
+
+  site_config {
+    always_on     = true
+    http2_enabled = true
+  }
+
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.default.instrumentation_key
   }
