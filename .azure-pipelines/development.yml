@@ -1,0 +1,32 @@
+trigger:
+- master
+
+variables:
+  terraformVersion: '0.14.4'
+  azureSubscription: 'Azure Sponsorship'
+  workingDirectory: '$(Build.SourcesDirectory)/envs/dev'
+  tfstateName: 'development.tfstate'
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Terraform_Plan
+  condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+  jobs:
+  - job: Development
+    pool:
+      vmImage: $(vmImage)
+    steps:
+    - template: templates/run-terraform.yml
+      parameters:
+        command: 'plan'
+
+- stage: Terraform_Apply
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  jobs:
+  - job: Development
+    pool:
+      vmImage: $(vmImage)
+    steps:
+    - template: templates/run-terraform.yml
+      parameters:
+        command: 'apply'
