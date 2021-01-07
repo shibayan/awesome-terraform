@@ -2,7 +2,7 @@ trigger:
 - release
 
 variables:
-  terraformVersion: '0.12.19'
+  terraformVersion: '0.14.4'
   azureSubscription: 'Azure Sponsorship'
   workingDirectory: '$(Build.SourcesDirectory)/envs/prd'
   tfstateName: 'production.tfstate'
@@ -17,14 +17,8 @@ stages:
       vmImage: $(vmImage)
     steps:
     - template: templates/terraform-init.yml
-
-    - task: TerraformTaskV1@0
-      inputs:
-        provider: 'azurerm'
+      parameters:
         command: 'plan'
-        environmentServiceNameAzureRM: $(azureSubscription)
-        workingDirectory: $(workingDirectory)
-      displayName: terraform plan
 
 - stage: Terraform_Apply
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/release')
@@ -34,11 +28,5 @@ stages:
       vmImage: $(vmImage)
     steps:
     - template: templates/terraform-init.yml
-
-    - task: TerraformTaskV1@0
-      inputs:
-        provider: 'azurerm'
+      parameters:
         command: 'apply'
-        environmentServiceNameAzureRM: $(azureSubscription)
-        workingDirectory: $(workingDirectory)
-      displayName: terraform apply
