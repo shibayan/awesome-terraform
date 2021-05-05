@@ -2,7 +2,7 @@ trigger:
 - release
 
 variables:
-  terraformVersion: '0.14.4'
+  terraformVersion: '0.15.1'
   azureSubscription: 'Azure Sponsorship'
   workingDirectory: '$(Build.SourcesDirectory)/envs/prd'
   tfstateName: 'production.tfstate'
