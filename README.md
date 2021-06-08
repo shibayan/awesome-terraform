@@ -1,6 +1,6 @@
 # awesome-terraform
 
-Basic Terraform sample definition using Azure and Azure Pipelines.
+Basic Terraform sample definition using Azure and Azure Pipelines / GitHub Actions.
 
 ## File structure
 
@@ -19,7 +19,7 @@ Basic Terraform sample definition using Azure and Azure Pipelines.
   - `variables.tf`
     - Define module variables
  
-## Resources
+## Azure Resources
 
 - Resource Group
 - Virtual Network
@@ -29,12 +29,17 @@ Basic Terraform sample definition using Azure and Azure Pipelines.
   - Regional VNET Integration
 - Application Insights
 
-## Pipelines
+## Azure Pipelines / GitHub Actions
 
-- `.azure`
+- `.azure-pipelines`
   - `templates`
-    - `terraform-init.yml`
-  - `pipelines-dev.yml`
+    - `run-terraform.yml`
+  - `development.yml`
     - for develop env
-  - `pipelines-prd.yml`
+  - `production.yml`
+    - for production env
+- `.github/workflows`
+  - `development.yml`
+    - for develop env
+  - `production.yml`
     - for production env
