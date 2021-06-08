@@ -8,7 +8,7 @@ steps:
     terraformVersion: $(terraformVersion)
   displayName: Install terraform
 
-- task: TerraformTaskV1@0
+- task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
     command: 'init'
@@ -20,7 +20,7 @@ steps:
     workingDirectory: $(workingDirectory)
   displayName: terraform init
 
-- task: TerraformTaskV1@0
+- task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
     command: ${{ parameters.command }}
