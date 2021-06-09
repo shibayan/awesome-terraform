@@ -4,8 +4,10 @@ trigger:
 variables:
   terraformVersion: '1.0.0'
   azureSubscription: 'Azure Sponsorship'
-  workingDirectory: '$(Build.SourcesDirectory)/envs/dev'
+  backendResourceGroup: 'ServerlessTest-RG'
+  backendStorageAccount: 'tfstatedemo1'
   tfstateName: 'development.tfstate'
+  workingDirectory: '$(Build.SourcesDirectory)/envs/dev'
   vmImage: 'ubuntu-latest'
 
 stages:
