@@ -13,8 +13,8 @@ steps:
     provider: 'azurerm'
     command: 'init'
     backendServiceArm: $(azureSubscription)
-    backendAzureRmResourceGroupName: 'ServerlessTest-RG'
-    backendAzureRmStorageAccountName: 'tfstatedemo1'
+    backendAzureRmResourceGroupName: $(backendResourceGroup)
+    backendAzureRmStorageAccountName: $(backendStorageAccount)
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: $(tfstateName)
     workingDirectory: $(workingDirectory)

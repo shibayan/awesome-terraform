@@ -4,8 +4,10 @@ trigger:
 variables:
   terraformVersion: '1.0.0'
   azureSubscription: 'Azure Sponsorship'
-  workingDirectory: '$(Build.SourcesDirectory)/envs/prd'
+  backendResourceGroup: 'ServerlessTest-RG'
+  backendStorageAccount: 'tfstatedemo1'
   tfstateName: 'production.tfstate'
+  workingDirectory: '$(Build.SourcesDirectory)/envs/prd'
   vmImage: 'ubuntu-latest'
 
 stages:
@@ -16,7 +18,7 @@ stages:
     pool:
       vmImage: $(vmImage)
     steps:
-    - template: templates/terraform-init.yml
+    - template: templates/run-terraform.yml
       parameters:
         command: 'plan'
 
@@ -27,6 +29,6 @@ stages:
     pool:
       vmImage: $(vmImage)
     steps:
-    - template: templates/terraform-init.yml
+    - template: templates/run-terraform.yml
       parameters:
         command: 'apply'
