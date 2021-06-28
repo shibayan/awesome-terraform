@@ -10,24 +10,29 @@ Basic Terraform sample definition using Azure and Azure Pipelines / GitHub Actio
   - `prd`
     - `main.tf`
 - `modules`
-  - `appInsights.tf`
-  - `appService.tf`
-  - `appServicePlan.tf`
-  - `resourceGroup.tf`
-  - `virtualNetwork.tf`
-    - Azure Resouces definition
-  - `variables.tf`
-    - Define module variables
+  - `common`
+    - Common Azure resources definition
+  - `functionapp`
+    - Azure Function resources definition
+  - `webapp`
+    - Web App resources definition
  
 ## Azure Resources
 
-- Resource Group
-- Virtual Network
-  - Subnet / Service Endpoint / Delegation
-- App Service Plan
+- Common
+  - Resource Group
+  - Virtual Network
+    - Subnet / Service Endpoint / Delegation
+  - Cosmos DB Account
+    - Virtual Network Rule
 - Web App
+  - App Service Plan
+  - Application Insights
   - Regional VNET Integration
-- Application Insights
+- Azure Functions
+  - App Service Plan
+  - Application Insights
+  - Regional VNET Integration
 
 ## Azure Pipelines / GitHub Actions
 
