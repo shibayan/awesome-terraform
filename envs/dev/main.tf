@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 terraform {
-  #backend "azurerm" {}
+  backend "azurerm" {}
 
   required_providers {
     azurerm = "~> 2.0"
