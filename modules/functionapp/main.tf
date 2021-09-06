@@ -31,6 +31,8 @@ resource "azurerm_function_app" "default" {
   app_service_plan_id        = azurerm_app_service_plan.default.id
   storage_account_name       = azurerm_storage_account.default.name
   storage_account_access_key = azurerm_storage_account.default.primary_access_key
+  version                    = "~3"
+  enable_builtin_logging     = false
 
   client_affinity_enabled = false
   https_only              = true
