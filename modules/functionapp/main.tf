@@ -42,6 +42,8 @@ resource "azurerm_function_app" "default" {
 
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.default.instrumentation_key
+    "FUNCTIONS_WORKER_RUNTIME"       = "dotnet"
+    "WEBSITE_RUN_FROM_PACKAGE"       = 1
   }
 }
 
