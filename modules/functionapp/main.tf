@@ -17,6 +17,7 @@ resource "azurerm_app_service_plan" "default" {
   name                = "plan-function-${var.environment}"
   location            = var.location
   resource_group_name = var.resource_group_name
+  kind                = "elastic"
 
   sku {
     tier = "ElasticPremium"
@@ -38,7 +39,6 @@ resource "azurerm_function_app" "default" {
   https_only              = true
 
   site_config {
-    always_on     = true
     http2_enabled = true
   }
 
