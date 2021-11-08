@@ -2,7 +2,7 @@ trigger:
 - master
 
 variables:
-  terraformVersion: '1.0.0'
+  terraformVersion: '1.0.10'
   azureSubscription: 'Azure Sponsorship'
   backendResourceGroup: 'ServerlessTest-RG'
   backendStorageAccount: 'tfstatedemo1'

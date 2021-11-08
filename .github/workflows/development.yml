@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 env:
-  TERRAFORM_VERSION: 1.0.0
+  TERRAFORM_VERSION: 1.0.10
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
