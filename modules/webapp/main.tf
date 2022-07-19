@@ -5,22 +5,21 @@ resource "azurerm_application_insights" "default" {
   application_type    = "web"
 }
 
-resource "azurerm_app_service_plan" "default" {
+resource "azurerm_service_plan" "default" {
   name                = "plan-appservice-${var.environment}"
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  sku {
-    tier = "PremiumV2"
-    size = "P1v2"
-  }
+  os_type  = "Windows"
+  sku_name = "P1v2"
 }
 
-resource "azurerm_app_service" "default" {
+resource "azurerm_windows_web_app" "default" {
   name                = "app-appservice-${var.environment}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  app_service_plan_id = azurerm_app_service_plan.default.id
+
+  service_plan_id = azurerm_service_plan.default.id
 
   client_affinity_enabled = false
   https_only              = true
@@ -28,6 +27,10 @@ resource "azurerm_app_service" "default" {
   site_config {
     always_on     = true
     http2_enabled = true
+
+    application_stack {
+      dotnet_version = "v6.0"
+    }
   }
 
   app_settings = {
@@ -36,6 +39,6 @@ resource "azurerm_app_service" "default" {
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "default" {
-  app_service_id = azurerm_app_service.default.id
+  app_service_id = azurerm_windows_web_app.default.id
   subnet_id      = var.webapp_subnet_id
 }
