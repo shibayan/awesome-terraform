@@ -34,7 +34,8 @@ resource "azurerm_windows_function_app" "default" {
   https_only                  = true
 
   site_config {
-    http2_enabled = true
+    application_insights_connection_string = azurerm_application_insights.default.connection_string
+    http2_enabled                          = true
 
     application_stack {
       dotnet_version = "6"
@@ -42,9 +43,7 @@ resource "azurerm_windows_function_app" "default" {
   }
 
   app_settings = {
-    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.default.instrumentation_key
-    "FUNCTIONS_WORKER_RUNTIME"       = "dotnet"
-    "WEBSITE_RUN_FROM_PACKAGE"       = 1
+    "WEBSITE_RUN_FROM_PACKAGE" = 1
   }
 }
 
