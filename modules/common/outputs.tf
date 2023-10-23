@@ -9,3 +9,8 @@ output "functionapp_subnet_id" {
 output "webapp_subnet_id" {
   value = azurerm_subnet.webapp.id
 }
+
+output "cosmos_connection_string" {
+  value     = azurerm_cosmosdb_account.default.primary_sql_connection_string
+  sensitive = true
+}

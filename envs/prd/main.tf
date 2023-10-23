@@ -1,13 +1,13 @@
-provider "azurerm" {
-  features {}
-}
-
 terraform {
   backend "azurerm" {}
 
   required_providers {
     azurerm = "~> 3.0"
   }
+}
+
+provider "azurerm" {
+  features {}
 }
 
 module "common" {
